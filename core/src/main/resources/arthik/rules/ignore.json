@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "rules": [
+    { "id": "ignore.promo", "institution": "*", "type": "IGNORE", "reason": "promotion", "priority": 900,
+      "patterns": ["pre-?approved", "\\bloan offer", "apply now", "Get a (?:personal )?loan", "convert your Credit Card .*into (?:Smart)?EMI", "\\bT&C ?apply", "limited period offer", "exclusive offer"] },
+    { "id": "ignore.mandate.setup", "institution": "*", "type": "IGNORE", "reason": "mandate-setup", "priority": 900,
+      "patterns": ["Mandate (?:for .*)?is successfully (?:created|cancelled|registered)", "NACH Mandate", "Standing Instruction on", "Freq ADHO", "UMRN"] },
+    { "id": "ignore.collect", "institution": "*", "type": "IGNORE", "reason": "collect-request", "priority": 900,
+      "patterns": ["has requested Rs", "collect request", "payment request of", "Once approved, money will be debited"] },
+    { "id": "ignore.billdue", "institution": "*", "type": "IGNORE", "reason": "bill-due", "priority": 850,
+      "patterns": ["New Bill Alert", "Fetch and Pay bill"] },
+    { "id": "ignore.balance.only", "institution": "*", "type": "IGNORE", "reason": "balance-only", "priority": 850,
+      "patterns": ["^Your A/C \\S+ has Av[a-z]* Bal", "has Avl BAL of"] },
+    { "id": "ignore.asba", "institution": "*", "type": "IGNORE", "reason": "ipo-block", "priority": 900,
+      "patterns": ["ASBA application", "Application value of .* is blocked"] },
+    { "id": "ignore.rewards", "institution": "*", "type": "IGNORE", "reason": "reward", "priority": 850,
+      "patterns": ["E-voucher", "reward points", "My Rewards"] },
+    { "id": "ignore.atm.count", "institution": "*", "type": "IGNORE", "reason": "service", "priority": 850,
+      "patterns": ["free transactions at"] },
+    { "id": "ignore.sip.registered", "institution": "*", "type": "IGNORE", "reason": "sip-registration", "priority": 850,
+      "patterns": ["SIP request is registered", "You made a Smart Move"] },
+    { "id": "ignore.upilite", "institution": "*", "type": "IGNORE", "reason": "upi-lite", "priority": 850,
+      "patterns": ["UPI LITE has been disabled"] },
+    { "id": "ignore.telco", "institution": "*", "type": "IGNORE", "reason": "telco", "priority": 800,
+      "patterns": ["Recharge of (?:Rs|INR) ?[0-9.,]+ is successful for your", "data usage", "Your pack"] },
+    { "id": "ignore.service", "institution": "*", "type": "IGNORE", "reason": "service", "priority": 800,
+      "patterns": ["KYC (?:updation|update) (?:for|is due)", "has been registered for", "linked by establishment", "NAV (?:of|for) .* as on"] },
+    { "id": "ignore.declined", "institution": "*", "type": "IGNORE", "reason": "failed", "priority": 900,
+      "patterns": ["Transaction Declined", "was declined", "could not be processed", "\\bfailed due to", "is not debited", "not been debited"] },
+    { "id": "ignore.predebit", "institution": "*", "type": "UPCOMING", "priority": 880,
+      "patterns": [
+        "{amount} will be deducted on {date:due} For {merchant} mandate",
+        "will be debited with {amount} on {date:due} towards {merchant} for AutoPay",
+        "{amount} for {merchant} will be auto-debited via .* by {date:due}"
+      ] }
+  ]
+}

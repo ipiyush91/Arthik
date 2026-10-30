@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rules": [
+    { "id": "sbicard.spend", "institution": "SBI Card", "source": "user", "verifiedOn": "2026-10-30", "priority": 200,
+      "accountType": "CREDIT_CARD", "direction": "DEBIT", "channel": "CARD", "kind": "PURCHASE",
+      "patterns": ["{amount} spent on your SBI Credit Card ending {acct} at {merchant} on {date}\\."],
+      "sample": "Rs.240.00 spent on your SBI Credit Card ending 2383 at FASHNEARTECHNOLOGIESPRI on 23/10/26. Trxn. not done by you? Report at https://sbicard.com/Dispute" },
+    { "id": "sbicard.payment", "institution": "SBI Card", "source": "user", "verifiedOn": "2026-10-30", "priority": 200,
+      "accountType": "CREDIT_CARD", "direction": "CREDIT", "channel": "BILLPAY", "kind": "CARD_PAYMENT",
+      "patterns": ["received payment of {amount} via (?<merchant>\\w+) & the same has been credited to your SBI Credit Card(?: ending {acct})?\\. Your available limit is {limit}"],
+      "sample": "We have received payment of Rs.1,628.12 via BBPS & the same has been credited to your SBI Credit Card. Your available limit is Rs.196,000.00." },
+    { "id": "sbicard.emandate", "institution": "SBI Card", "type": "UPCOMING", "source": "user", "verifiedOn": "2026-10-30", "priority": 200,
+      "accountType": "CREDIT_CARD",
+      "patterns": ["your payment of {amount} at {merchant} is due on {date:due} and will be processed through your credit card ending {acct}"],
+      "sample": "Dear Cardholder, your payment of INR 906.30 at Amazon is due on 29/08/2026 and will be processed through your credit card ending 2383 as per e-Mandate (SiHub ID: XXXXXXXX) registered by you." },
+    { "id": "sbicard.promo.bt", "institution": "SBI Card", "type": "IGNORE", "reason": "promotion", "source": "user", "priority": 300,
+      "patterns": ["Balance Transfer on EMI facility"] },
+    { "id": "sbicard.service.limit", "institution": "SBI Card", "type": "IGNORE", "reason": "service", "source": "user", "priority": 300,
+      "patterns": ["request to increase the Credit Limit", "credit limit enhancement", "Service Request Number"] }
+  ]
+}

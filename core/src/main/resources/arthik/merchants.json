@@ -1,0 +1,40 @@
+{
+  "aliases": {
+    "^FASHNEAR": "Meesho",
+    "^MEESHO": "Meesho",
+    "^SWIGGY|SWIGGY\\b": "Swiggy",
+    "^ZOMATO|ZOMATO\\b": "Zomato",
+    "^AMAZON PAY BAL": "Amazon Pay Balance",
+    "^AMAZON(?! PAY)|AMZN": "Amazon",
+    "^FLIPKART": "Flipkart",
+    "^MYNTRA": "Myntra",
+    "^BLINKIT|GROFERS": "Blinkit",
+    "^ZEPTO|KIRANAKART": "Zepto",
+    "^BIGBASKET|BBNOW|INNOVATIVE RETAIL": "BigBasket",
+    "^UBER": "Uber",
+    "^OLA\\b|ANI TECHNOLOGIES": "Ola",
+    "^RAPIDO|ROPPEN": "Rapido",
+    "^IRCTC": "IRCTC",
+    "^NETFLIX": "Netflix",
+    "^SPOTIFY": "Spotify",
+    "^CRED\\b|CRED CLUB": "CRED",
+    "^MOTHER DAIRY": "Mother Dairy",
+    "BIL\\*ONL": "Online bill payment",
+    "^NFS\\*CASH|CASH WDL": "ATM withdrawal",
+    "^CAM\\*": "Cash deposit"
+  },
+  "keywords": {
+    "food": ["Swiggy", "Zomato", "Dominos", "Domino's", "Pizza", "McDonald", "KFC", "Burger", "Starbucks", "Cafe", "Restaurant", "Dhaba", "Haldiram", "Bikanervala", "Chaayos", "Eatclub", "Box8", "Faasos", "Rebel Foods", "Sweets", "Bakery", "Canteen"],
+    "groceries": ["BigBasket", "Blinkit", "Zepto", "Instamart", "JioMart", "DMart", "Avenue Supermarts", "Reliance Fresh", "Reliance Smart", "More Retail", "Spencer", "Nature's Basket", "Mother Dairy", "Milk", "Dairy", "Kirana", "General Store", "Grocery", "Vegetable", "Fruits", "Country Delight", "Milkbasket"],
+    "shopping": ["Amazon", "Flipkart", "Myntra", "Meesho", "Ajio", "Nykaa", "Tata Cliq", "Croma", "Reliance Digital", "Vijay Sales", "Decathlon", "Ikea", "Lenskart", "Hardware", "Lifestyle", "Westside", "Trends", "Pantaloons", "Shoppers Stop", "Firstcry", "Purplle", "Snapdeal", "Shopsy"],
+    "transport": ["Uber", "Ola", "Rapido", "Namma Yatri", "BluSmart", "Metro", "DMRC", "BMTC", "Petrol", "Fuel", "HPCL", "BPCL", "Indian Oil", "IOCL", "Shell", "Nayara", "Toll Plaza", "FASTag", "Parking", "Fuel Station"],
+    "bills": ["Airtel", "Jio", "Vodafone", "Vi ", "BSNL", "ACT Fibernet", "Hathway", "Tata Play", "Dish TV", "Sun Direct", "BESCOM", "MSEDCL", "TNEB", "TANGEDCO", "BSES", "Tata Power", "Adani Electricity", "CESC", "UPPCL", "Electricity", "Indane", "HP Gas", "Bharat Gas", "Mahanagar Gas", "IGL", "Water", "Broadband", "Insurance", "LIC", "Premium", "Online bill payment"],
+    "rent_emi": ["Rent", "NoBroker", "EMI", "Loan", "Finlease", "Finance", "Financi", "Bajaj Fin", "HDB Fin", "Tata Capital", "Home Credit", "KreditBee", "Moneyview", "Navi Fin", "Fibe", "Cashe", "MoneyTap", "Lendingkart", "Muthoot", "Housing"],
+    "health": ["Pharmac", "Pharmacy", "Chemist", "Medical", "Medicos", "Apollo", "1mg", "Tata 1mg", "PharmEasy", "Netmeds", "MedPlus", "Hospital", "Clinic", "Diagnostic", "Lal PathLabs", "Thyrocare", "Practo", "Cult", "Gym", "Dental"],
+    "entertainment": ["Netflix", "Spotify", "Hotstar", "JioHotstar", "Disney", "Prime Video", "YouTube", "Google Play", "Apple", "Sony Liv", "SonyLIV", "Zee5", "BookMyShow", "PVR", "INOX", "Cinepolis", "Steam", "Gaana", "JioSaavn", "Audible", "Kindle"],
+    "travel": ["MakeMyTrip", "Goibibo", "Cleartrip", "Yatra", "EaseMyTrip", "IRCTC", "IndiGo", "Interglobe", "Air India", "Vistara", "SpiceJet", "Akasa", "Redbus", "Abhibus", "Ixigo", "OYO", "Airbnb", "Booking.com", "Agoda", "Hotel", "Scapia"],
+    "investments": ["Zerodha", "Groww", "Upstox", "Angel One", "Angel Broking", "Dhan", "Kite", "Coin", "INDmoney", "Paytm Money", "Kuvera", "Smallcase", "ICCL", "Indian Clearing", "NSE Clearing", "BSE Ltd", "Mutual Fund", "MutualF", "Invest", "SIP"],
+    "transfers": ["CRED", "Amazon Pay Balance", "Cash deposit", "Self", "Own account"],
+    "cash": ["ATM withdrawal", "Cash Wdl"]
+  }
+}

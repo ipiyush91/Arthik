@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "rules": [
+    { "id": "hdfc.cc.upi.txn", "institution": "HDFC Bank", "source": "user", "verifiedOn": "2026-10-30", "priority": 200,
+      "accountType": "CREDIT_CARD", "direction": "DEBIT", "channel": "UPI", "kind": "PURCHASE",
+      "patterns": ["Txn {amount} On HDFC Bank Card {acct} At {merchant} by UPI {ref} On {date}(?: |$)"],
+      "sample": "Txn Rs.110.00\nOn HDFC Bank Card 0021\nAt *ymkc@ptys \nby UPI 222444231460\nOn 28-10\nNot You?\nCall 18002586161/SMS BLOCK CC 0021 to 7308080808" },
+    { "id": "hdfc.cc.statement.ready", "institution": "HDFC Bank", "type": "STATEMENT", "source": "user", "verifiedOn": "2026-10-30", "priority": 200,
+      "accountType": "CREDIT_CARD",
+      "patterns": ["Statement Generated: ?For HDFC Bank Credit Card {acct}"],
+      "sample": "Statement Generated:\nFor HDFC Bank Credit Card XX7674.\nView: https://...\nPay: https://..." }
+  ]
+}
