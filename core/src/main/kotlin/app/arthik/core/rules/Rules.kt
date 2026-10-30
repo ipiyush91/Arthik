@@ -21,7 +21,8 @@ enum class RuleType { TXN, STATEMENT, UPCOMING, SNAPSHOT, IGNORE }
  *  {merchant} / {text:name}                -> lazy text
  *  {ref} / {ref:name}                      -> alphanumeric reference (UPI RRN, UTR)
  *  {any}                                   -> lazy skip
- * A literal space matches any run of whitespace, including none.
+ * A literal space matches any run of whitespace, including none. Regex quantifiers ({4}, {3,9}) are allowed.
+ * A TXN rule without {amount} is accepted only when it captures `qty` (securities moved, amount 0).
  */
 @Serializable
 data class Rule(
@@ -67,7 +68,8 @@ class CompiledRule(val rule: Rule) {
 }
 
 object TemplateCompiler {
-    private val placeholder = Regex("""\{(\w+)(?::(\w+))?\}""")
+    // Must start with a letter so regex quantifiers such as \d{4} or [A-Z]{3} are left alone.
+    private val placeholder = Regex("""\{([A-Za-z]\w*)(?::(\w+))?\}""")
     private const val MONEY_PREFIX = """Rs ?"""
 
     fun compile(template: String): Regex {

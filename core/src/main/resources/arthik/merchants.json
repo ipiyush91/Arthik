@@ -18,6 +18,7 @@
     "^NETFLIX": "Netflix",
     "^SPOTIFY": "Spotify",
     "^CRED\\b|CRED CLUB": "CRED",
+    "^GROWW?$|^GROWW\\b": "Groww",
     "^MOTHER DAIRY": "Mother Dairy",
     "BIL\\*ONL": "Online bill payment",
     "^NFS\\*CASH|CASH WDL": "ATM withdrawal",
@@ -33,7 +34,7 @@
     "health": ["Pharmac", "Pharmacy", "Chemist", "Medical", "Medicos", "Apollo", "1mg", "Tata 1mg", "PharmEasy", "Netmeds", "MedPlus", "Hospital", "Clinic", "Diagnostic", "Lal PathLabs", "Thyrocare", "Practo", "Cult", "Gym", "Dental"],
     "entertainment": ["Netflix", "Spotify", "Hotstar", "JioHotstar", "Disney", "Prime Video", "YouTube", "Google Play", "Apple", "Sony Liv", "SonyLIV", "Zee5", "BookMyShow", "PVR", "INOX", "Cinepolis", "Steam", "Gaana", "JioSaavn", "Audible", "Kindle"],
     "travel": ["MakeMyTrip", "Goibibo", "Cleartrip", "Yatra", "EaseMyTrip", "IRCTC", "IndiGo", "Interglobe", "Air India", "Vistara", "SpiceJet", "Akasa", "Redbus", "Abhibus", "Ixigo", "OYO", "Airbnb", "Booking.com", "Agoda", "Hotel", "Scapia"],
-    "investments": ["Zerodha", "Groww", "Upstox", "Angel One", "Angel Broking", "Dhan", "Kite", "Coin", "INDmoney", "Paytm Money", "Kuvera", "Smallcase", "ICCL", "Indian Clearing", "NSE Clearing", "BSE Ltd", "Mutual Fund", "MutualF", "Invest", "SIP"],
+    "investments": ["Zerodha", "Groww", "Upstox", "Angel One", "Angel Broking", "Dhan", "Kite", "Coin", "INDmoney", "Paytm Money", "Kuvera", "Smallcase", "ICCL", "Indian Clearing", "NSE Clearing", "BSE Ltd", "Mutual Fund", "MutualF", "MUTUAL F", "AxisMF", "ICICIPruMF", "MiraeAssetMF", "NationalSecuritiesClearin", "Invest", "SIP"],
     "transfers": ["CRED", "Amazon Pay Balance", "Cash deposit", "Self", "Own account"],
     "cash": ["ATM withdrawal", "Cash Wdl"]
   }

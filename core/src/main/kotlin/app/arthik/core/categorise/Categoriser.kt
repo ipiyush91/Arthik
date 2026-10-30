@@ -56,7 +56,8 @@ class Categoriser(dictionary: MerchantDictionary) {
         TxnKind.REFUND -> CategoryIds.REFUNDS
         TxnKind.EMI -> CategoryIds.RENT_EMI
         TxnKind.INVESTMENT, TxnKind.EPF_CONTRIBUTION, TxnKind.MF_ALLOTMENT, TxnKind.SECURITIES_DEBIT -> CategoryIds.INVESTMENTS
-        TxnKind.MF_REDEMPTION, TxnKind.BROKER_PAYOUT -> if (direction == Direction.CREDIT) CategoryIds.INVESTMENTS else null
+        TxnKind.BROKER_PAYOUT -> CategoryIds.INVESTMENTS
+        TxnKind.MF_REDEMPTION -> if (direction == Direction.CREDIT) CategoryIds.INVESTMENTS else null
         TxnKind.PURCHASE, null -> null
     }
 

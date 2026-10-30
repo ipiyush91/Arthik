@@ -1,1 +1,37 @@
-{ "version": 1, "rules": [] }
+{
+  "version": 1,
+  "rules": [
+    { "id": "apay.payment", "institution": "Amazon Pay", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
+      "accountType": "WALLET", "direction": "DEBIT", "channel": "WALLET",
+      "patterns": ["Payment of {amount} using Apay Balance successful at {merchant}\\. Updated Balance is {balance}"],
+      "sample": "Payment of Rs 150.50 using Apay Balance successful at merchant. Updated Balance is Rs 850.00 - SMS by Juspay" },
+    { "id": "apay.debit", "institution": "Amazon Pay", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
+      "accountType": "WALLET", "direction": "DEBIT", "channel": "WALLET",
+      "patterns": ["Your Apay Wallet balance is debited for {amount} Transaction Reference Number is {ref}"],
+      "sample": "Your Apay Wallet balance is debited for INR 250.00 Transaction Reference Number is 123456789012 - Powered by Juspay" },
+    { "id": "phonepe.giftcard", "institution": "PhonePe", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
+      "accountType": "WALLET", "direction": "DEBIT", "channel": "WALLET",
+      "patterns": ["You.ve paid {amount} via PhonePe (?:gift card|wallet) to {merchant} on {date} at {any}Remaining balance {balance}"],
+      "sample": "You've paid Rs.3 via PhonePe gift card to EXAMPLE HOSIERY on May 9, 2026 at 7:06:36 PM. Not you? Call us on 022-10000002. Remaining balance Rs.0." },
+    { "id": "payzapp.debit", "institution": "PayZapp", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
+      "accountType": "WALLET", "direction": "DEBIT", "channel": "WALLET",
+      "patterns": ["{amount} debited from your PayZapp Wallet on {date} Bal: ?{balance}"],
+      "sample": "Rs.60 debited from your PayZapp Wallet on 08-10-2025 13:37:29\nBal: Rs.2440\nNot you?  Report:\nhttps://example.invalid/x or SMS BLOCKPZW" },
+    { "id": "payzapp.load", "institution": "PayZapp", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
+      "accountType": "WALLET", "direction": "CREDIT", "channel": "WALLET", "kind": "WALLET_TOPUP",
+      "patterns": ["{amount} credited to your PayZapp Wallet On {date} Bal: ?{balance}"],
+      "sample": "Rs.2500\ncredited to your PayZapp Wallet\nOn 08-10-2025 13:37:18\nBal:Rs.2500\nNot you? Report:https://example.invalid/y -HDFC Bank" },
+    { "id": "cred.wallet.load", "institution": "CRED", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
+      "accountType": "WALLET", "direction": "CREDIT", "channel": "WALLET", "kind": "WALLET_TOPUP",
+      "patterns": ["{amount} has been successfully credited to your CRED wallet\\. Your updated CRED wallet balance is {balance}"],
+      "sample": "Update from CRED wallet: Rs.208.00 has been successfully credited to your CRED wallet. Your updated CRED wallet balance is Rs.243.00. For any queries or support, call 080-10000000." },
+    { "id": "slice.upi.sent", "institution": "slice", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
+      "accountType": "SAVINGS", "direction": "DEBIT", "channel": "UPI",
+      "patterns": ["{amount} sent from a/c {acct} on {date} to {merchant} \\(UPI Ref: ?{ref}\\)"],
+      "sample": "Rs. 100 sent from a/c xx2743 on 17-Jun-26 to Hussain Shaikh (UPI Ref: 616851070000). Not you? Call 08048329999 - slice" },
+    { "id": "slice.upi.received", "institution": "slice", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
+      "accountType": "SAVINGS", "direction": "CREDIT", "channel": "UPI",
+      "patterns": ["{amount} received in slice A/c {acct} on {date} from {merchant} via UPI \\(Ref ID: ?{ref}\\)\\. Avl\\. Bal\\. {balance}"],
+      "sample": "Rs. 2,000 received in slice A/c xx2743 on 15-Jun-26 from NASIMUDDIN NAJAMUDDIN SHAIKH via UPI (Ref ID: 212756500000). Avl. Bal. Rs. 2,203.56 - slice" }
+  ]
+}

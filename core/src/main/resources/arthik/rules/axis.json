@@ -1,1 +1,23 @@
-{ "version": 1, "rules": [] }
+{
+  "version": 1,
+  "rules": [
+    { "id": "axis.dc.atm", "institution": "Axis Bank", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 110,
+      "accountType": "SAVINGS", "direction": "DEBIT", "channel": "ATM", "kind": "CASH_WITHDRAWAL",
+      "patterns": [
+        "{amount} debited from A/c no\\. {acct} on (?<merchant>AXIS BANK L) {date} IST\\. Avl bal: ?(?:{balance}|INR \\w+)",
+        "{amount} debited from A/c no\\. \\S+ on (?<merchant>AXIS BANK L) {date} IST\\. Avl bal: ?(?:{balance}|INR \\w+)\\. Not you\\? SMS BLOCKCARD (?:XX)?{acct}"
+      ],
+      "sample": "INR 2000.00 debited from A/c no. XX589034 on AXIS BANK L 04-11-2025 16:06:39 IST. Avl bal: INR 98919.81. Not you? SMS BLOCKCARD XX0192 to +919951860002 - Axis Bank" },
+    { "id": "axis.dc.debit", "institution": "Axis Bank", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
+      "accountType": "SAVINGS", "direction": "DEBIT", "channel": "CARD",
+      "patterns": [
+        "{amount} debited from A/c no\\. {acct} on {merchant} {date} IST\\. Avl bal: ?(?:{balance}|INR \\w+)",
+        "{amount} debited from A/c no\\. \\S+ on {merchant} {date} IST\\. Avl bal: ?(?:{balance}|INR \\w+)\\. Not you\\? SMS BLOCKCARD (?:XX)?{acct}"
+      ],
+      "sample": "INR 209.00 debited from A/c no. XXxxxxy on BURGRILL 04-12-2025 13:13:27 IST. Avl bal: INR xxxxxxx. Not you? SMS BLOCKCARD XX0023 to +919951860002 - Axis Bank" },
+    { "id": "axis.sb.emi", "institution": "Axis Bank", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
+      "accountType": "SAVINGS", "direction": "DEBIT", "kind": "EMI",
+      "patterns": ["{amount} debited from A/c {acct} for (?<merchant>EMI) due on {date}\\. Avl Bal {balance}"],
+      "sample": "INR 5,000.00 debited from A/c XX1111 for EMI due on 05-10-26. Avl Bal INR 10,000.00" }
+  ]
+}

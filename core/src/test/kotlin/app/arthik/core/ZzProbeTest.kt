@@ -23,6 +23,13 @@ class ZzProbeTest {
             }
             out.append("$id\t$s\n")
         }
+        val dbg = File("$dir/debug.txt")
+        if (dbg.exists()) {
+            val (id, body) = dbg.readText().trim().split("\t", limit = 2)
+            val r = TestSupport.repo.rules.first { it.rule.id == id }
+            val n = app.arthik.core.text.Normalizer.normalise(body.replace("\\n", "\n"))
+            r.regexes.forEach { out.append("RX $it\nBODY $n\nMATCH ${it.find(n)?.value}\n") }
+        }
         File("$dir/out.txt").writeText(out.toString())
     }
 }

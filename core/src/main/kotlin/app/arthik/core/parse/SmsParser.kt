@@ -80,7 +80,8 @@ class SmsParser(private val repo: RuleRepository) {
                 ruleId = rule.id,
             )
             RuleType.TXN -> {
-                val amount = Amounts.toPaise(g("amount")) ?: return null
+                // Securities movements (CDSL debits) carry a quantity but no money amount.
+                val amount = Amounts.toPaise(g("amount")) ?: if (g("qty") != null) 0L else return null
                 val direction = rule.direction ?: GenericParser.direction(body) ?: return null
                 val merchant = cleanMerchant(g("merchant"))
                 val detail = InvestmentDetail(
@@ -123,7 +124,7 @@ class SmsParser(private val repo: RuleRepository) {
         )
         private val FINANCIAL_AMOUNT = Regex("""Rs ?[0-9]""")
         private val FINANCIAL_WORD = Regex(
-            """debit|credit|spent|paid|sent|received|withdrawn|deposit|transfer|refund|revers|txn|purchase|payment|balance|\bA/?c\b|card""",
+            """debit|credit|\bDr\b|\bCr\b|spent|paid|sent|received|withdraw|deposit|transfer|refund|revers|txn|purchase|payment|balance|\bA/?c\b|card""",
             RegexOption.IGNORE_CASE,
         )
 

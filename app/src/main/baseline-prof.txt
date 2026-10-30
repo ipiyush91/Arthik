@@ -1,0 +1,10 @@
+# Hand-written baseline profile: precompile Arthik's own code and the hot Compose paths used at
+# startup and while scrolling. Regenerate with a Macrobenchmark module for best results.
+HSPLapp/arthik/**;->**(**)**
+Lapp/arthik/**;
+HSPLandroidx/compose/runtime/**;->**(**)**
+HSPLandroidx/compose/ui/**;->**(**)**
+HSPLandroidx/compose/foundation/lazy/**;->**(**)**
+HSPLandroidx/compose/foundation/gestures/**;->**(**)**
+HSPLandroidx/compose/animation/core/**;->**(**)**
+HSPLandroidx/paging/**;->**(**)**

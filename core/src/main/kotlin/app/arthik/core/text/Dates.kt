@@ -41,6 +41,7 @@ object Dates {
         if (raw.isNullOrBlank()) return null
         val token = raw.trim().replace(Regex("""[ ,]+\d{1,2}:\d{2}(:\d{2})?( ?[AP]M)?$""", RegexOption.IGNORE_CASE), "")
             .replace(Regex("""(\d{4}-\d{2}-\d{2}):.*"""), "$1").trim().trimEnd(',', '.')
+            .replace(Regex("""(?<=\d)(?:st|nd|rd|th)\b""", RegexOption.IGNORE_CASE), "").replace("'", "")
         val normalised = token.replace(Regex("""\s+"""), " ")
         for (f in withYear) {
             runCatching { return LocalDate.parse(normalised, f) }

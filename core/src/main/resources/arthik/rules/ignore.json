@@ -31,7 +31,15 @@
       "patterns": [
         "{amount} will be deducted on {date:due} For {merchant} mandate",
         "will be debited with {amount} on {date:due} towards {merchant} for AutoPay",
-        "{amount} for {merchant} will be auto-debited via .* by {date:due}"
-      ] }
+        "{amount} for {merchant} will be auto-debited via .* by {date:due}",
+        "^{amount} will be debited from your account on {date:due} for {merchant}$"
+      ] },
+    { "id": "ignore.nav.update", "institution": "*", "type": "IGNORE", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 850, "reason": "service",
+      "patterns": ["NAV updated for"] },
+    { "id": "ignore.pledge", "institution": "*", "type": "IGNORE", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 850, "reason": "service",
+      "patterns": ["initiated a margin pledge"] },
+    { "id": "ignore.cred.card.payment", "institution": "CRED", "type": "IGNORE", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 850, "reason": "duplicate-of-issuer-sms",
+      "patterns": ["successfully credited towards your {any}Credit Card\\. Your payment was settled"],
+      "sample": "Payment of Rs.50000 has been successfully credited towards your ICICI Bank Credit Card. Your payment was settled in 3 seconds - CRED" }
   ]
 }
