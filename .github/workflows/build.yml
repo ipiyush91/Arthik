@@ -52,12 +52,24 @@ jobs:
       - name: Build debug APK
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
-        run: ./gradlew :app:assembleDebug --console=plain --stacktrace
+        run: |
+          ./gradlew :app:assembleDebug --console=plain --stacktrace 2>&1 | tee /tmp/build.log
+          exit ${PIPESTATUS[0]}
 
       - name: Find APK
+        if: always()
         run: find app/build/outputs -name "*.apk" 2>/dev/null || echo "No APK found"
 
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: /tmp/build.log
+          retention-days: 7
+
       - name: Upload debug APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: arthik-debug
