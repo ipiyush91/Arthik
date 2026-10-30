@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The app name lives only here (rename the app by changing this value). -->
+    <string name="app_name">Arthik</string>
+    <string name="widget_name">Arthik — this month</string>
+    <string name="widget_description">Month-to-date spend, top buckets and next card due date</string>
+</resources>
