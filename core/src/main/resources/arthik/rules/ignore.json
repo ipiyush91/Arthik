@@ -35,9 +35,11 @@
         "^{amount} will be debited from your account on {date:due} for {merchant}$"
       ] },
     { "id": "ignore.nav.update", "institution": "*", "type": "IGNORE", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 850, "reason": "service",
-      "patterns": ["NAV updated for"] },
+      "patterns": ["NAV updated for"],
+      "sample": "NAV updated for Navi Largecap Fund. Latest NAV: 12.3456. Visit the Navi app for details." },
     { "id": "ignore.pledge", "institution": "*", "type": "IGNORE", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 850, "reason": "service",
-      "patterns": ["initiated a margin pledge"] },
+      "patterns": ["initiated a margin pledge"],
+      "sample": "Dear Investor, your DP GEOJIT INVESTMENTS LIMITED has initiated a margin pledge from your (NSDL/ CDSL) demat account" },
     { "id": "ignore.cred.card.payment", "institution": "CRED", "type": "IGNORE", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 850, "reason": "duplicate-of-issuer-sms",
       "patterns": ["successfully credited towards your {any}Credit Card\\. Your payment was settled"],
       "sample": "Payment of Rs.50000 has been successfully credited towards your ICICI Bank Credit Card. Your payment was settled in 3 seconds - CRED" }

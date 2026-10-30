@@ -23,7 +23,8 @@
       "sample": "Dear XXXXXXXX41 your passbook balance against PYKRP1234567 is Rs. 1,23,456.78. Contribution of Rs. 3,600/- for due month Jun-26 has been received." },
     { "id": "epfo.balance", "institution": "EPFO", "type": "SNAPSHOT", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
       "accountType": "EPF",
-      "patterns": ["passbook balance against [A-Z]*\\d*?(?<acct>\\d{4}) is {balance}\\."] },
+      "patterns": ["passbook balance against [A-Z]*\\d*?(?<acct>\\d{4}) is {balance}\\."],
+      "sample": "Dear XXXXXXXX41 your passbook balance against PYKRP1234567 is Rs. 1,23,456.78." },
     { "id": "cdsl.debit", "institution": "CDSL", "source": "public-verbatim", "verifiedOn": "2026-10-30", "priority": 100,
       "accountType": "INVESTMENT", "direction": "DEBIT", "kind": "SECURITIES_DEBIT",
       "patterns": [
