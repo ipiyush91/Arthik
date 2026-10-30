@@ -43,10 +43,16 @@ jobs:
           java-version: 17
           cache: gradle
 
+      - name: Write local.properties
+        run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
+
+      - name: Show Android SDK contents
+        run: ls /usr/local/lib/android/sdk/ 2>/dev/null || echo "SDK not found at expected path"
+
       - name: Build debug APK
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
-        run: ./gradlew :app:assembleDebug --console=plain -q
+        run: ./gradlew :app:assembleDebug --console=plain --stacktrace 2>&1 | tail -60
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
@@ -83,6 +89,9 @@ jobs:
           keyAlias=${{ secrets.KEY_ALIAS }}
           keyPassword=${{ secrets.KEY_PASSWORD }}
           EOF
+
+      - name: Write local.properties
+        run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
 
       - name: Build release APK
         env:
