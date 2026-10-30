@@ -139,7 +139,7 @@ fun AccountDetailScreen(id: Long, nav: NavController) {
                         Text("From SMS only — may be incomplete. Add opening holdings for accuracy.", style = MaterialTheme.typography.bodySmall,
                             color = glass.warning)
                     }
-                    AccountType.LOAN -> Amount(a.loanOutstanding ?: 0, style = MaterialTheme.typography.headlineMedium)
+                    AccountType.LOAN -> Amount(a.loanOutstanding ?: 0L, style = MaterialTheme.typography.headlineMedium)
                     else -> {
                         a.balance?.let { Amount(it, style = MaterialTheme.typography.headlineMedium) } ?: Text("Balance not seen in SMS yet")
                         a.balanceAt?.let { Text("as of ${it.format(DateTimeFormatter.ofPattern("d MMM, h:mm a"))}", style = MaterialTheme.typography.bodySmall, color = glass.textSecondary) }

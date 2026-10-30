@@ -35,7 +35,9 @@ import androidx.navigation.NavController
 import app.arthik.BuildConfig
 import app.arthik.backup.AutoBackupSecret
 import app.arthik.container
+import androidx.room.withTransaction
 import app.arthik.data.db.FxRateEntity
+import app.arthik.data.db.clearAll
 import app.arthik.data.prefs.AppSettings
 import app.arthik.data.repo.SmsAnonymiser
 import app.arthik.ui.Routes
@@ -190,7 +192,7 @@ fun SettingsScreen(nav: NavController) {
         onDismissRequest = { confirmClear = false },
         title = { Text("Clear all data?") },
         text = { Text("This deletes all transactions, accounts, budgets and rules from Arthik. Make a backup first if you may want them back.") },
-        confirmButton = { TextButton(onClick = { confirmClear = false; run("Clear") { c.db.maintenance().clearAll(); c.settings.setInitialScanDone(false); "All data cleared" } }) { Text("Delete everything") } },
+        confirmButton = { TextButton(onClick = { confirmClear = false; run("Clear") { c.db.withTransaction { c.db.maintenance().clearAll() }; c.settings.setInitialScanDone(false); "All data cleared" } }) { Text("Delete everything") } },
         dismissButton = { TextButton(onClick = { confirmClear = false }) { Text("Cancel") } },
     )
     if (showFx) FxDialog(onDismiss = { showFx = false })

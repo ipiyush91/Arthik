@@ -5,7 +5,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Transaction
 import androidx.room.Update
 import androidx.room.Upsert
 import app.arthik.core.model.AccountType
@@ -270,14 +269,14 @@ interface FxDao {
     @Upsert suspend fun upsert(r: FxRateEntity)
 }
 
+/** Deletes everything except categories. Callers wrap it in `withTransaction` when it must be atomic. */
+suspend fun MaintenanceDao.clearAll() {
+    clearTransactions(); clearSms(); clearAccounts(); clearRules(); clearBudgets(); clearRecurring(); clearActivities()
+    clearOwn(); clearFx()
+}
+
 @Dao
 interface MaintenanceDao {
-    @Transaction
-    suspend fun clearAll() {
-        clearTransactions(); clearSms(); clearAccounts(); clearRules(); clearBudgets(); clearRecurring(); clearActivities()
-        clearOwn(); clearFx()
-    }
-
     @Insert suspend fun insertAccounts(v: List<AccountEntity>)
     @Insert suspend fun insertTransactions(v: List<TransactionEntity>)
     @Insert(onConflict = OnConflictStrategy.IGNORE) suspend fun insertSms(v: List<SmsEntity>)

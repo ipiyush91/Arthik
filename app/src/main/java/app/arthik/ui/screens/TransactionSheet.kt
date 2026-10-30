@@ -74,7 +74,7 @@ fun TransactionSheet(
     var pickCategory by remember { mutableStateOf(false) }
 
     LaunchedEffect(id) {
-        txn = if (id == null) c.transactions.newManual(accounts.firstOrNull()?.id ?: 0) else c.transactions.get(id)
+        txn = if (id == null) c.transactions.newManual(accounts.firstOrNull()?.id ?: 0L) else c.transactions.get(id)
         if (id != null) sms = c.transactions.rawSms(id)
     }
     val t = txn ?: return

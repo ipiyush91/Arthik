@@ -53,7 +53,7 @@ class Settings(private val context: Context) {
         widgetShowAmounts = this[K.widgetAmounts] ?: false,
         autoBackupEnabled = this[K.autoBackup] ?: false,
         autoBackupFolder = this[K.autoBackupFolder],
-        lastBackupAt = this[K.lastBackup] ?: 0,
+        lastBackupAt = this[K.lastBackup] ?: 0L,
         initialScanDone = this[K.initialScan] ?: false,
     )
 

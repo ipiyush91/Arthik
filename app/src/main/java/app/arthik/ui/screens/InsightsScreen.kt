@@ -59,7 +59,7 @@ class InsightsViewModel(val c: AppContainer) : ViewModel() {
             val names = (a + b).associate { it.categoryId to it.name }
             val ids = (a.map { it.categoryId } + b.map { it.categoryId }).distinct()
             InsightsState(
-                compare = ids.map { Triple(names[it] ?: it, a.firstOrNull { x -> x.categoryId == it }?.total ?: 0, before[it] ?: 0) }
+                compare = ids.map { Triple(names[it] ?: it, a.firstOrNull { x -> x.categoryId == it }?.total ?: 0L, before[it] ?: 0L) }
                     .sortedByDescending { it.second },
                 merchants = m,
                 recurring = r,

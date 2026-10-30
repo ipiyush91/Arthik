@@ -59,7 +59,7 @@ fun BudgetsScreen(nav: NavController) {
         }
         rows.forEach { (id, name) ->
             item(key = id) {
-                val u = if (id == OVERALL_BUDGET) spend.sumOf { it.total } else used[id] ?: 0
+                val u = if (id == OVERALL_BUDGET) spend.sumOf { it.total } else used[id] ?: 0L
                 val limit = limits[id]
                 GlassCard(onClick = { editing = id to name }, padding = 14.dp) {
                     Row {
@@ -82,7 +82,7 @@ fun BudgetsScreen(nav: NavController) {
                 OutlinedTextField(text, { text = it }, label = { Text("Monthly limit (₹), empty = none") }, singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number))
             },
-            confirmButton = { TextButton(onClick = { scope.launch { c.budgets.set(id, Amounts.toPaise(text) ?: 0) }; editing = null }) { Text("Save") } },
+            confirmButton = { TextButton(onClick = { scope.launch { c.budgets.set(id, Amounts.toPaise(text) ?: 0L) }; editing = null }) { Text("Save") } },
             dismissButton = { TextButton(onClick = { editing = null }) { Text("Cancel") } },
         )
     }

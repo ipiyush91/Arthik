@@ -53,7 +53,7 @@ object BudgetChecker {
         val total = spend.sumOf { it.total }
         val names = c.db.categories().all().associate { it.id to it.name }
         for (b in c.budgets.all()) {
-            val used = if (b.categoryId == OVERALL_BUDGET) total else byCat[b.categoryId] ?: 0
+            val used = if (b.categoryId == OVERALL_BUDGET) total else byCat[b.categoryId] ?: 0L
             val pct = if (b.amount > 0) used * 100 / b.amount else 0
             val name = if (b.categoryId == OVERALL_BUDGET) "Overall budget" else names[b.categoryId] ?: b.categoryId
             when {

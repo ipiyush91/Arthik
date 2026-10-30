@@ -106,12 +106,12 @@ class DashboardViewModel(private val c: AppContainer) : ViewModel() {
                     else "${period.from.format(labelFmt)} – ${period.to.format(labelFmt)}",
                 spend = d.spend, income = d.income, lastSpend = d.lastPeriodSpend,
                 slices = d.byCategory.map { Slice(it.categoryId, it.name, it.total, Color(it.color.toInt())) },
-                bars = days.map { Bar(it.format(labelFmt), (byDay[it] ?: 0).coerceAtLeast(0)) },
+                bars = days.map { Bar(it.format(labelFmt), (byDay[it] ?: 0L).coerceAtLeast(0L)) },
                 netWorth = nw,
                 dues = accounts.filter { it.type == AccountType.CREDIT_CARD && !it.hidden && (it.dueDate != null || it.statementNeedsInput) }
                     .sortedBy { it.dueDate ?: LocalDate.MAX }.take(3).map { it.toDue() },
                 budgets = budgets.sortedBy { it.categoryId != OVERALL_BUDGET }.take(4).map { b ->
-                    val used = if (b.categoryId == OVERALL_BUDGET) d.spend else catTotals[b.categoryId] ?: 0
+                    val used = if (b.categoryId == OVERALL_BUDGET) d.spend else catTotals[b.categoryId] ?: 0L
                     BudgetLine(if (b.categoryId == OVERALL_BUDGET) "Overall" else catNames[b.categoryId] ?: b.categoryId, used, b.amount)
                 },
                 unrecognised = unrec,

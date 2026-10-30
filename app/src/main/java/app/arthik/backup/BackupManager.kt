@@ -15,6 +15,7 @@ import app.arthik.data.db.OwnIdentityEntity
 import app.arthik.data.db.RecurringEntity
 import app.arthik.data.db.SmsEntity
 import app.arthik.data.db.TransactionEntity
+import app.arthik.data.db.clearAll
 import java.io.ByteArrayOutputStream
 import java.security.SecureRandom
 import java.time.LocalDate

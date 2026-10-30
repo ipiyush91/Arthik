@@ -124,7 +124,7 @@ class AccountRepository(private val db: ArthikDatabase) {
     /** Card outstanding: limit - available when known, else the last statement total. */
     fun cardOutstanding(a: AccountEntity): Long =
         if (a.creditLimit != null && a.availableLimit != null) (a.creditLimit - a.availableLimit).coerceAtLeast(0)
-        else a.statementTotal ?: 0
+        else a.statementTotal ?: 0L
 
     fun investedValue(activities: List<ActivityEntity>): Long = activities.sumOf {
         when (it.type) {
@@ -139,11 +139,11 @@ class AccountRepository(private val db: ArthikDatabase) {
         val byAccount = acts.groupBy { it.accountId }
         NetWorth(
             bank = visible.filter { it.type in setOf(AccountType.SAVINGS, AccountType.WALLET, AccountType.FASTAG, AccountType.DEPOSIT) }
-                .sumOf { it.balance ?: 0 },
+                .sumOf { it.balance ?: 0L },
             investments = visible.filter { it.type in setOf(AccountType.INVESTMENT, AccountType.EPF, AccountType.NPS) }
                 .sumOf { it.balance ?: investedValue(byAccount[it.id].orEmpty()) },
             cardDues = visible.filter { it.type == AccountType.CREDIT_CARD }.sumOf { cardOutstanding(it) },
-            loans = visible.filter { it.type == AccountType.LOAN }.sumOf { it.loanOutstanding ?: 0 },
+            loans = visible.filter { it.type == AccountType.LOAN }.sumOf { it.loanOutstanding ?: 0L },
         )
     }
 }
